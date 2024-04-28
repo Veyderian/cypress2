@@ -4,9 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test:auth": "npx cypress run --record --key 374bd754-b359-4880-93f8-d0096a5d8302 --spec \"cypress/e2e/auth.cy.js\" --group auth --ci-build-id 6",
-    "test:seats": "npx cypress run --record --key 374bd754-b359-4880-93f8-d0096a5d8302 --spec \"cypress/e2e/seats.cy.js\" --group seats --ci-build-id 6",
-    "test:parallel": "npm run test:seats & test:auth"
+    "test:auth": "start npx cypress run --record --key 374bd754-b359-4880-93f8-d0096a5d8302 --spec \"cypress/e2e/auth.cy.js\" --group auth --ci-build-id 14",
+    "test:seats": "start npx cypress run --record --key 374bd754-b359-4880-93f8-d0096a5d8302 --spec \"cypress/e2e/seats.cy.js\" --group seats --ci-build-id 14",
+    "test:parallel": "npm run test:auth & npm run test:seats"
   },
   "author": "",
   "license": "ISC",
