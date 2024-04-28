@@ -17,7 +17,7 @@ describe('movie tickets reservations', () => {
 	tests.forEach(test => {
 		it(test.name, () => {
 			cy.get('.page-nav__day').eq(4).click();
-			cy.get('.movie').first().contains('00:00').click();
+			cy.get('.movie').first().contains('13:00').click();
 			test.data.forEach(seat => {
 				cy.get(`.buying-scheme__wrapper > :nth-child(${seat.row}) > :nth-child(${seat.seat})`).click();
 			});
@@ -28,21 +28,6 @@ describe('movie tickets reservations', () => {
 	});
 });
 
-describe('auth', () => {
-			beforeEach(() => {
-				cy.visit('https://qamid.tmweb.ru/admin/');
-			})
-
-			it('form authorizations', () => {
-				cy.login();
-				cy.contains("Управление залами").should('be.visible');
-			})
-
-			it('unform authorizations', () => {
-				cy.wronglogin();
-				cy.contains("Ошибка авторизации!").should('be.visible');
-			})
-    }); 
 
 
 

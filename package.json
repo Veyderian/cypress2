@@ -4,11 +4,16 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test:auth": "npx cypress run --record --key 374bd754-b359-4880-93f8-d0096a5d8302 --spec \"cypress/e2e/auth.cy.js\" --group auth --ci-build-id 6",
+    "test:seats": "npx cypress run --record --key 374bd754-b359-4880-93f8-d0096a5d8302 --spec \"cypress/e2e/seats.cy.js\" --group seats --ci-build-id 6",
+    "test:parallel": "npm run test:seats & test:auth"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "cypress": "^13.8.1"
+  },
+  "devDependencies": {
+    "npm-run-all": "^4.1.5"
   }
 }
