@@ -13,6 +13,16 @@ describe('movie tickets reservations', () => {
 		cy.get('.page-nav__day').should('have.length', 7);
 	})
 
+	it('should movie "Унесённые ветром" is available at the box office', () => {
+		cy.get('.page-nav__day').eq(2).click();
+		cy.contains('Унесенные ветром.').should('be.exist')
+	})
+
+	it('should movie "Начало" is not available at the box office', () => {
+		cy.get('.page-nav__day').eq(6).click();
+		cy.contains('Начало').should('not.be.exist')
+	})
+
 
 	tests.forEach(test => {
 		it(test.name, () => {

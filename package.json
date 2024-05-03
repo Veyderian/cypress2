@@ -4,9 +4,19 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test:auth": "start npx cypress run --record --key 374bd754-b359-4880-93f8-d0096a5d8302 --spec \"cypress/e2e/auth.cy.js\" --group auth --ci-build-id 14",
-    "test:seats": "start npx cypress run --record --key 374bd754-b359-4880-93f8-d0096a5d8302 --spec \"cypress/e2e/seats.cy.js\" --group seats --ci-build-id 14",
-    "test:parallel": "npm run test:auth & npm run test:seats"
+    "test:auth": "start npx cypress run --record --key 374bd754-b359-4880-93f8-d0096a5d8302 --spec \"cypress/e2e/auth.cy.js\" --group auth --ci-build-id 21",
+    "test:seats": "start npx cypress run --record --key 374bd754-b359-4880-93f8-d0096a5d8302 --spec \"cypress/e2e/seats.cy.js\" --group seats --ci-build-id 21",
+    "test:parallel": "npm run test:auth & npm run test:seats &",
+    "test:auth:chrome": "npx cypress run --record --spec \"cypress/e2e/auth.cy.js\" --group auth --browser chrome",
+    "test:seats:chrome": "npx cypress run --record --spec \"cypress/e2e/seats.cy.js\" --group seats --browser chrome",
+    "test:parallel:chrome": "run-p -c test:auth:chrome & npm run test:seats:chrome",
+    "test:auth:electron": "npx cypress run --record  --spec \"cypress/e2e/auth.cy.js\" --group auth:electron --browser electron",
+    "test:seats:electron": "npx cypress run --record --spec \"cypress/e2e/seats.cy.js\" --group seats:electron --browser electron",
+    "test:parallel:electron": "run-p -c test:auth:electron & npm run test:seats:electron",
+    "test:auth:edge": "npx cypress run --record --spec \"cypress/e2e/auth.cy.js\" --group auth:edge --browser edge",
+    "test:seats:edge": "npx cypress run --record --spec \"cypress/e2e/seats.cy.js\" --group seats:edge --browser edge",
+    "test:parallel:edge": "run-p -c test:auth:edge test:seats:edge",
+    "test:parallel:all": "run-p -c test:parallel:chrome test:parallel:electron test:parallel:edge"
   },
   "author": "",
   "license": "ISC",
